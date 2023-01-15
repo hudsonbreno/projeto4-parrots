@@ -1,0 +1,55 @@
+body{
+ background-color:#EEF9BF;
+}
+h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing:  -0.004em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: #75B79E;
+    margin-top: 40px;
+}
+
+article{
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+}
+.conteudo-da-pagina{
+    display: flex;
+    align-items: center;
+    margin-left:122px;
+    margin-right: 36px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.card{
+    width: 117px;
+    height:146px;
+    margin-right: 34px;
+    margin-bottom: 34px;
+    flex-wrap: wrap;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card img{
+    width: 100px;
+    height: 100px;
+
+}
+.rotate:hover   {
+    transition: 300ms linear;
+    transform: rotateY(180deg);
+}
