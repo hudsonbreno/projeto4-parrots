@@ -16,13 +16,25 @@ while(quantidade%2>0 && (quantidade=>2 && quantidade>=16 )){
     }
 }
 
-srcImg.sort(comparador);
+srcImg.sort(sortear);
 
-function comparador() { 
-	return Math.random() - 0.5; 
+let cartas_jogo =srcImg.slice(0, (quantidade/2));
+for(i=0;i<quantidade/2;i++){
+    cartas_jogo.push(cartas_jogo[i]);
 }
+cartas_jogo.sort(sortear);
 
 contCardId=0;
+for(contCardId=0;contCardId<quantidade;contCardId++){
+    var div = document.createElement("div");
+    div.className = "back-face";
+    div. classList.add('virada');
+    div.setAttribute("onclick","viradaCards(this)");
+    div.innerHTML= "<img src='" + cartas_jogo[contCardId] + "'>";
+    document.getElementById("jogo").appendChild(div);
+}
+
+
 setCards();
 function setCards(){
     while (contCardId < quantidade){
@@ -32,9 +44,9 @@ function setCards(){
         divVerso.classList.add('virada');
         divVerso.setAttribute("onclick","viraCards(this)");
         card.append(divVerso);
-        setaImgVerse(divVerso);
-        setFront (card, contCardId);
-        contCardId
+        //setaImgVerse(divVerso);
+        //setFront (card, contCardId);
+        //contCardId
     }
 }
 
@@ -52,3 +64,8 @@ function selecCard(){
 //        desvira();
 //    }
 //}
+
+
+function sortear() { 
+	return Math.random() - 0.5; 
+}

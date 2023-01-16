@@ -47,7 +47,10 @@ article{
 .card img{
     width: 100px;
     height: 100px;
+}
 
+.esse{
+    background-color:black;
 }
 .rotate:hover   {
     transition: 300ms linear;
