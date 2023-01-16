@@ -39,20 +39,14 @@ h1{
 }
 
 .frente{
+    display: initial;
     width: 100px;
     height: 100px;
+
 }
 
 .viradaimg {
     display: none;
     width: 100px;
     height: 100px;
-}
-.cima img:hover{
-    display: none;
-}
-.viradaimg:hover   {
-    display: inline;
-    transition: 300ms linear;
-    transform: rotateY(180deg);
 }

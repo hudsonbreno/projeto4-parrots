@@ -37,6 +37,7 @@ for(contCardId=0;contCardId<quantidade;contCardId++){
 let quantidadeCartas=0;
 let atual;
 let anterior;
+let elementanterior;
 
 
 function viradaCards(element){
@@ -44,39 +45,39 @@ function viradaCards(element){
 
     }else{
         anterior = atual;
+        element.style.transition= "all 300ms linear";
+        element.style.transform= "rotateY(180deg)";
         element.querySelector(".frente").style.display="none";
         element.querySelector(".viradaimg").style.display="initial";
         atual = element.querySelector(".viradaimg").src;
         quantidadeCartas++;
-        comparar()
+        if(comparar() === true){
+            elementanterior.removeAttribute("onclick");
+            element.removeAttribute("onclick");
+        }else if (quantidadeCartas%2==0){
+            setTimeout(()=> {desvirar(element,elementanterior)},1000);
+        }
+        elementanterior = element;
     }
 }
 
 function comparar(){
     if(quantidadeCartas%2==0 && quantidadeCartas>0){
-        alert(anterior === atual);
-    }
-
+        return(anterior === atual)
+   }
 }
 
+function desvirar(element, elementanterior){
+    elementanterior
+    element.style.transition= "all 1000ms linear";
+    element.style.transform= "rotateY(180deg)";
+    elementanterior.style.transition= "all 1000ms linear";
+    elementanterior.style.transform= "rotateY(180deg)";
 
-function desvirarCarta(){
-    let FirstCard = document.querySelector(".Card"+Previous_Id)
-    FirstCard.classList.remove('viradaimg')
-
-    let SecondCard = document.querySelector(".Card"+Current_Id)
-    SecondCard.classList.remove('Show_Verse')
-}
-
-
-
-function cartasIguais(){
-    let iguais = primeiraCarta.innerHTML === segundaCarta.innerHTML
-    if (iguais){
-        fixarCartas();
-    } else {
-        desvira();
-    }
+    elementanterior.querySelector(".frente").style.display="initial";
+    elementanterior.querySelector(".viradaimg").style.display="none";
+    element.querySelector(".frente").style.display="initial"; 
+    element.querySelector(".viradaimg").style.display="none";
 }
 
 
