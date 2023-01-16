@@ -15,21 +15,16 @@ h1{
     margin-top: 40px;
 }
 
-article{
-    display: flex;
-    align-items: center;
-    align-content: center;
-
-}
 .conteudo-da-pagina{
     display: flex;
-    align-items: center;
-    margin-left:122px;
-    margin-right: 36px;
-    width: 100%;
-    flex-wrap: wrap;
+    justify-content: center;
 }
-.card{
+#jogo{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+.back-face{
     width: 117px;
     height:146px;
     margin-right: 34px;
@@ -41,18 +36,23 @@ article{
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
-.card img{
+.cima img{
     width: 100px;
     height: 100px;
 }
 
-.esse{
-    background-color:black;
+.viradaimg {
+    display: none;
+    width: 100px;
+    height: 100px;
 }
-.rotate:hover   {
+.cima img:hover{
+    display: none;
+}
+.viradaimg:hover   {
+    display: inline;
     transition: 300ms linear;
     transform: rotateY(180deg);
 }

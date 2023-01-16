@@ -1,3 +1,4 @@
+let parrot = "./img/back.png";
 let srcImg = new Array ("./img/bobrossparrot.gif",
                         "./img/explodyparrot.gif",
                         "./img/fiestaparrot.gif",
@@ -26,44 +27,29 @@ cartas_jogo.sort(sortear);
 
 contCardId=0;
 for(contCardId=0;contCardId<quantidade;contCardId++){
-    var div = document.createElement("div");
-    div.className = "back-face";
-    div. classList.add('virada');
-    div.setAttribute("onclick","viradaCards(this)");
-    div.innerHTML= "<img src='" + cartas_jogo[contCardId] + "'>";
-    document.getElementById("jogo").appendChild(div);
+    let divverso = document.createElement("divverso");
+    divverso.className = "back-face";
+    divverso.classList.add('virada','cima');
+    divverso.setAttribute("onclick","viradaCards(this)");
+    divverso.innerHTML= "<img class='viradaimg' src='" + cartas_jogo[contCardId] + "'><img class='cima' src='" + parrot + "'>";
+    document.getElementById("jogo").appendChild(divverso);
 }
 
 
-setCards();
-function setCards(){
-    while (contCardId < quantidade){
-        let card = document.getElementById('card${contCardId}');
-        let divVerso = document.createElement('div');
-        divVerso.className="back-face";
-        divVerso.classList.add('virada');
-        divVerso.setAttribute("onclick","viraCards(this)");
-        card.append(divVerso);
-        //setaImgVerse(divVerso);
-        //setFront (card, contCardId);
-        //contCardId
+function viradaCards(){
+    let selecionada = document.querySelector("div");
+    console.log(seleciona);
+}
+
+
+function cartasIguais(){
+    let iguais = primeiraCarta.innerHTML === segundaCarta.innerHTML
+    if (iguais){
+        fixarCartas();
+    } else {
+        desvira();
     }
 }
-
-function selecCard(){
-    let card = document.querySelector("item")
-    card.innerHTML = item;
-}
-
-
-//function cartasIguais(){
-//    let iguais = primeiraCarta.innerHTML === segundaCarta.innerHTML
-//    if (iguais){
-//        fixarCartas();
-//    } else {
-//        desvira();
-//    }
-//}
 
 
 function sortear() { 
