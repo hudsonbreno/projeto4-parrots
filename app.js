@@ -27,19 +27,47 @@ cartas_jogo.sort(sortear);
 
 contCardId=0;
 for(contCardId=0;contCardId<quantidade;contCardId++){
-    let divverso = document.createElement("divverso");
-    divverso.className = "back-face";
-    divverso.classList.add('virada','cima');
-    divverso.setAttribute("onclick","viradaCards(this)");
-    divverso.innerHTML= "<img class='viradaimg' src='" + cartas_jogo[contCardId] + "'><img class='cima' src='" + parrot + "'>";
-    document.getElementById("jogo").appendChild(divverso);
+    let div = document.createElement("div");
+    div.className = "back-face";
+    div.classList.add('virada','cima');
+    div.setAttribute("onclick","viradaCards(this)");
+    div.innerHTML= "<img class='viradaimg' id='carta"+ contCardId +"' src='" + cartas_jogo[contCardId] + "'><img class='frente' src='" + parrot + "'>";
+    document.getElementById("jogo").appendChild(div);
+}
+let quantidadeCartas=0;
+let atual;
+let anterior;
+
+
+function viradaCards(element){
+    if(element.querySelector(".viradaimg").style.display ==='initial'){
+
+    }else{
+        anterior = atual;
+        element.querySelector(".frente").style.display="none";
+        element.querySelector(".viradaimg").style.display="initial";
+        atual = element.querySelector(".viradaimg").src;
+        quantidadeCartas++;
+        comparar()
+    }
+}
+
+function comparar(){
+    if(quantidadeCartas%2==0 && quantidadeCartas>0){
+        alert(anterior === atual);
+    }
+
 }
 
 
-function viradaCards(){
-    let selecionada = document.querySelector("div");
-    console.log(seleciona);
+function desvirarCarta(){
+    let FirstCard = document.querySelector(".Card"+Previous_Id)
+    FirstCard.classList.remove('viradaimg')
+
+    let SecondCard = document.querySelector(".Card"+Current_Id)
+    SecondCard.classList.remove('Show_Verse')
 }
+
 
 
 function cartasIguais(){
