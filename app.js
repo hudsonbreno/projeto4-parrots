@@ -7,8 +7,7 @@ let srcImg = new Array ("./img/bobrossparrot.gif",
                         "./img/tripletsparrot.gif",
                         "./img/unicornparrot.gif")
 
-//quantidade = prompt("Digite a quantidade de cartas no jogo");
-quantidade = 4;
+quantidade = prompt("Digite a quantidade de cartas no jogo");
 while(quantidade%2>0 && (quantidade=>2 && quantidade>=16 )){
     alert("Coloque um valor entre 4 e 14 e que seja par.")
     quantidade = prompt("Digite a quantidade de cartas no jogo");
@@ -37,6 +36,7 @@ for(contCardId=0;contCardId<quantidade;contCardId++){
 let quantidadeCartas=0;
 let atual;
 let anterior;
+let elementatual;
 let elementanterior;
 
 
@@ -44,21 +44,44 @@ function viradaCards(element){
     if(element.querySelector(".viradaimg").style.display ==='initial'){
 
     }else{
-        anterior = atual;
-        element.style.transition= "all 300ms linear";
-        element.style.transform= "rotateY(180deg)";
-        element.querySelector(".frente").style.display="none";
-        element.querySelector(".viradaimg").style.display="initial";
-        atual = element.querySelector(".viradaimg").src;
+        if (elementanterior !== undefined) {
+            elementatual = element;
+            atual = elementatual.querySelector(".viradaimg").src;
+            elementatual.style.transition= "all 300ms linear";
+            elementatual.style.transform= "rotateY(180deg)";
+            elementatual.querySelector(".frente").style.display="none";
+            elementatual.querySelector(".viradaimg").style.display="initial";
+        }
+
+        if (elementanterior === undefined) {
+            elementanterior = element;
+            anterior = elementanterior.querySelector(".viradaimg").src;
+        }
+        elementanterior.style.transition= "all 300ms linear";
+        elementanterior.style.transform= "rotateY(180deg)";
+        elementanterior.querySelector(".frente").style.display="none";
+        elementanterior.querySelector(".viradaimg").style.display="initial";
         quantidadeCartas++;
-        if(comparar() === true){
+        if(anterior === atual){
             elementanterior.removeAttribute("onclick");
             element.removeAttribute("onclick");
+            elementanterior = undefined;
         }else if (quantidadeCartas%2==0){
-            setTimeout(()=> {desvirar(element,elementanterior)},1000);
+            setTimeout(()=>{desvirar(elementatual)},1000);
+            setTimeout(()=>{desviraranteriror(elementanterior)},1000);
         }
-        elementanterior = element;
     }
+}
+
+function desvirar(elementatual){
+    elementatual.querySelector(".frente").style.display="initial"; 
+    elementatual.querySelector(".viradaimg").style.display="none";
+}
+
+function desviraranteriror(elementanterior){
+    elementanterior.querySelector(".frente").style.display="initial"; 
+    elementanterior.querySelector(".viradaimg").style.display="none";
+    elementanterior = undefined;
 }
 
 function comparar(){
@@ -66,20 +89,6 @@ function comparar(){
         return(anterior === atual)
    }
 }
-
-function desvirar(element, elementanterior){
-    elementanterior
-    element.style.transition= "all 1000ms linear";
-    element.style.transform= "rotateY(180deg)";
-    elementanterior.style.transition= "all 1000ms linear";
-    elementanterior.style.transform= "rotateY(180deg)";
-
-    elementanterior.querySelector(".frente").style.display="initial";
-    elementanterior.querySelector(".viradaimg").style.display="none";
-    element.querySelector(".frente").style.display="initial"; 
-    element.querySelector(".viradaimg").style.display="none";
-}
-
 
 function sortear() { 
 	return Math.random() - 0.5; 
